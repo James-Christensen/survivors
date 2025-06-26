@@ -1,0 +1,13 @@
+res://characters/happy_boo/happy_boo.tscn
+res://characters/slime/slime.tscn
+res://pistol/impact/impact.tscn
+res://pistol/muzzle_flash/muzzle_flash.tscn
+res://smoke_explosion/smoke_explosion.tscn
+res://player.gd
+res://player.tscn
+res://game.tscn
+res://pinetree.tscn
+res://mob.tscn
+res://mob.gd
+res://gun.tscn
+res://gun.gd
