@@ -11,3 +11,4 @@ res://test_bullet.gd
 res://bullet_old.tscn
 res://mob.gd
 res://player.gd
+res://game.gd

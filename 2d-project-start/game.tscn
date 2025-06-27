@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c1nqgcoftemh1"]
 
+[ext_resource type="Script" uid="uid://2aogeww6mxlj" path="res://game.gd" id="1_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://b4dtaeyg4g0k" path="res://player.tscn" id="2_e2o6t"]
-[ext_resource type="PackedScene" uid="uid://c27xpmf0btb4d" path="res://mob.tscn" id="3_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://ymcfig6q58q3" path="res://pinetree.tscn" id="3_feb5d"]
 
 [sub_resource type="Curve2D" id="Curve2D_feb5d"]
@@ -12,6 +12,7 @@ point_count = 7
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_fc0e3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -32,20 +33,9 @@ position = Vector2(-945, -527)
 curve = SubResource("Curve2D_feb5d")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+unique_name_in_owner = true
 position = Vector2(-159, -156)
 rotation = 1.61472
-
-[node name="Mob" parent="." instance=ExtResource("3_fc0e3")]
-position = Vector2(624, 385)
-
-[node name="Mob2" parent="." instance=ExtResource("3_fc0e3")]
-position = Vector2(263, 800)
-
-[node name="Mob3" parent="." instance=ExtResource("3_fc0e3")]
-position = Vector2(1741, 919)
-
-[node name="Mob4" parent="." instance=ExtResource("3_fc0e3")]
-position = Vector2(1829, 122)
 
 [node name="PineTree" parent="." instance=ExtResource("3_feb5d")]
 position = Vector2(169, 128)
@@ -70,3 +60,6 @@ position = Vector2(846, 78)
 
 [node name="PineTree8" parent="." instance=ExtResource("3_feb5d")]
 position = Vector2(1170, 831)
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
