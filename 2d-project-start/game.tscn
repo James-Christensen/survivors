@@ -6,9 +6,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_feb5d"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -159, -156, 0, 0, 0, 0, -215, 1118, 0, 0, 0, 0, 2120, 1223, 0, 0, 0, 0, 2132, 1222, 0, 0, 0, 0, 2173, -151, 0, 0, 0, 0, -153, -149)
+"points": PackedVector2Array(0, 0, 0, 0, -159, -156, 0, 0, 0, 0, -215, 1118, 0, 0, 0, 0, 2120, 1223, 0, 0, 0, 0, 2132, 1222, 0, 0, 0, 0, 2173, -151, 0, 0, 0, 0, -153, -149, 0, 0, 0, 0, -159, -156)
 }
-point_count = 6
+point_count = 7
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -26,6 +26,14 @@ color = Color(0.425961, 0.68416, 0.416709, 1)
 [node name="Player" parent="." instance=ExtResource("2_e2o6t")]
 unique_name_in_owner = true
 position = Vector2(945, 527)
+
+[node name="Path2D" type="Path2D" parent="Player"]
+position = Vector2(-945, -527)
+curve = SubResource("Curve2D_feb5d")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+position = Vector2(-159, -156)
+rotation = 1.61472
 
 [node name="Mob" parent="." instance=ExtResource("3_fc0e3")]
 position = Vector2(624, 385)
@@ -62,10 +70,3 @@ position = Vector2(846, 78)
 
 [node name="PineTree8" parent="." instance=ExtResource("3_feb5d")]
 position = Vector2(1170, 831)
-
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_feb5d")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-159, -156)
-rotation = 1.61472
