@@ -5,3 +5,4 @@ res://survivors_game.tscn
 res://GameManager.gd
 res://header.gd
 res://mob.gd
+res://gun.gd
