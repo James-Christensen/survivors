@@ -1,15 +1,1 @@
-res://survivors_game.tscn
-res://play_again_button_pressed.tres
-res://GameManager.gd
-res://bullet.gd
-res://mob.gd
-res://Scenes/survivors_game.tscn
-res://Scenes/game.gd
-res://Scenes/player/gun.gd
-res://Scenes/powerups/HealPowerUp.tscn
-res://Scenes/powerups/power_up.gd
-res://Scenes/powerups/DamagePowerUp.tscn
-res://Scenes/powerups/HPPowerUp.tscn
-res://Scenes/powerups/powerup.tscn
-res://Scenes/player/player.tscn
-res://Scenes/player/player.gd
+res://main_menu.tscn
