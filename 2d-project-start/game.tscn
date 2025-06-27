@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1nqgcoftemh1"]
+[gd_scene load_steps=6 format=3 uid="uid://c1nqgcoftemh1"]
 
 [ext_resource type="Script" uid="uid://2aogeww6mxlj" path="res://game.gd" id="1_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://b4dtaeyg4g0k" path="res://player.tscn" id="2_e2o6t"]
 [ext_resource type="PackedScene" uid="uid://ymcfig6q58q3" path="res://pinetree.tscn" id="3_feb5d"]
+[ext_resource type="PackedScene" uid="uid://c27xpmf0btb4d" path="res://mob_old.tscn" id="4_fc0e3"]
 
 [sub_resource type="Curve2D" id="Curve2D_feb5d"]
 _data = {
@@ -60,6 +61,15 @@ position = Vector2(846, 78)
 
 [node name="PineTree8" parent="." instance=ExtResource("3_feb5d")]
 position = Vector2(1170, 831)
+
+[node name="Mob" parent="." instance=ExtResource("4_fc0e3")]
+position = Vector2(231, 457)
+
+[node name="Mob2" parent="." instance=ExtResource("4_fc0e3")]
+position = Vector2(959, 1020)
+
+[node name="Mob3" parent="." instance=ExtResource("4_fc0e3")]
+position = Vector2(1549, 93)
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
