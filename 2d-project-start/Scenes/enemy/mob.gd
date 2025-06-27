@@ -20,12 +20,12 @@ func _physics_process(_delta):
 
 func take_damage():
 	%Slime.play_hurt()
-	health -= 1
+	health -= GameManager.damage_amount
 
-	if health == 0:
+	if health <= 0:
 		var smoke_scene = preload("res://smoke_explosion/smoke_explosion.tscn")
 		var smoke = smoke_scene.instantiate()
 		get_parent().add_child(smoke)
 		smoke.global_position = global_position
-		GameManager.add_score(10)			
+		GameManager.add_score(10)
 		queue_free()

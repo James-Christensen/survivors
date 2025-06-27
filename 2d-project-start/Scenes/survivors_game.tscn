@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dun1cpardk2xw"]
+[gd_scene load_steps=9 format=3 uid="uid://dun1cpardk2xw"]
 
-[ext_resource type="Script" uid="uid://2aogeww6mxlj" path="res://game.gd" id="1_qclsr"]
-[ext_resource type="PackedScene" uid="uid://b4dtaeyg4g0k" path="res://player.tscn" id="2_a7q7f"]
-[ext_resource type="PackedScene" uid="uid://ymcfig6q58q3" path="res://pinetree.tscn" id="3_6h7ij"]
-[ext_resource type="StyleBox" uid="uid://rjmty1saw2qr" path="res://play_again_button_pressed.tres" id="3_7jj1j"]
-[ext_resource type="Script" uid="uid://ydqki8iy5iw8" path="res://header.gd" id="3_qqaft"]
+[ext_resource type="Script" uid="uid://2aogeww6mxlj" path="res://Scenes/game.gd" id="1_eua6o"]
+[ext_resource type="PackedScene" uid="uid://b4dtaeyg4g0k" path="res://Scenes/player/player.tscn" id="2_dfjrj"]
+[ext_resource type="StyleBox" uid="uid://rjmty1saw2qr" path="res://assets/play_again_button_pressed.tres" id="3_twsm8"]
+[ext_resource type="Script" uid="uid://ydqki8iy5iw8" path="res://UI/header.gd" id="4_qxpe7"]
+[ext_resource type="PackedScene" uid="uid://ymcfig6q58q3" path="res://pinetree.tscn" id="5_v0jmy"]
+[ext_resource type="PackedScene" uid="uid://c0mo8axus5q67" path="res://Scenes/powerups/powerup.tscn" id="6_dfjrj"]
 
 [sub_resource type="Curve2D" id="Curve2D_cp6e5"]
 _data = {
@@ -17,13 +18,15 @@ bg_color = Color(0.188235, 0.188235, 0.188235, 0.619608)
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_qclsr")
+script = ExtResource("1_eua6o")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
 autostart = true
 
-[node name="Player" parent="." instance=ExtResource("2_a7q7f")]
+[node name="Player" parent="." instance=ExtResource("2_dfjrj")]
+collision_layer = 32785
+collision_mask = 32785
 
 [node name="Path2D" type="Path2D" parent="Player"]
 curve = SubResource("Curve2D_cp6e5")
@@ -78,8 +81,8 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0627451, 0.698039, 0.937255, 1)
 theme_override_font_sizes/font_size = 50
-theme_override_styles/pressed = ExtResource("3_7jj1j")
-theme_override_styles/normal = ExtResource("3_7jj1j")
+theme_override_styles/pressed = ExtResource("3_twsm8")
+theme_override_styles/normal = ExtResource("3_twsm8")
 text = "Play Again?"
 
 [node name="Grass" type="CanvasLayer" parent="."]
@@ -105,7 +108,7 @@ grow_horizontal = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_l26od")
-script = ExtResource("3_qqaft")
+script = ExtResource("4_qxpe7")
 
 [node name="MarginContainer" type="MarginContainer" parent="HUD/Header"]
 layout_mode = 2
@@ -142,38 +145,41 @@ size_flags_horizontal = 3
 text = "Score: 100"
 horizontal_alignment = 2
 
-[node name="PineTree" parent="." instance=ExtResource("3_6h7ij")]
+[node name="PineTree" parent="." instance=ExtResource("5_v0jmy")]
 position = Vector2(66, 591)
 
-[node name="PineTree2" parent="." instance=ExtResource("3_6h7ij")]
+[node name="PineTree2" parent="." instance=ExtResource("5_v0jmy")]
 position = Vector2(155, 643)
 
-[node name="PineTree3" parent="." instance=ExtResource("3_6h7ij")]
+[node name="PineTree3" parent="." instance=ExtResource("5_v0jmy")]
 position = Vector2(-9.99997, 687)
 
-[node name="PineTree4" parent="." instance=ExtResource("3_6h7ij")]
+[node name="PineTree4" parent="." instance=ExtResource("5_v0jmy")]
 position = Vector2(682, 254)
 
-[node name="PineTree5" parent="." instance=ExtResource("3_6h7ij")]
+[node name="PineTree5" parent="." instance=ExtResource("5_v0jmy")]
 position = Vector2(829, 384)
 
-[node name="PineTree11" parent="." instance=ExtResource("3_6h7ij")]
+[node name="PineTree11" parent="." instance=ExtResource("5_v0jmy")]
 position = Vector2(781, -296)
 
-[node name="PineTree6" parent="." instance=ExtResource("3_6h7ij")]
+[node name="PineTree6" parent="." instance=ExtResource("5_v0jmy")]
 position = Vector2(-677, 313)
 
-[node name="PineTree7" parent="." instance=ExtResource("3_6h7ij")]
+[node name="PineTree7" parent="." instance=ExtResource("5_v0jmy")]
 position = Vector2(-788, 370)
 
-[node name="PineTree8" parent="." instance=ExtResource("3_6h7ij")]
+[node name="PineTree8" parent="." instance=ExtResource("5_v0jmy")]
 position = Vector2(-829, 229)
 
-[node name="PineTree9" parent="." instance=ExtResource("3_6h7ij")]
+[node name="PineTree9" parent="." instance=ExtResource("5_v0jmy")]
 position = Vector2(-346, -355)
 
-[node name="PineTree10" parent="." instance=ExtResource("3_6h7ij")]
+[node name="PineTree10" parent="." instance=ExtResource("5_v0jmy")]
 position = Vector2(-573, -231)
+
+[node name="Powerup" parent="." instance=ExtResource("6_dfjrj")]
+position = Vector2(433, 349)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]

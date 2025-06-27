@@ -2,13 +2,12 @@ extends Area2D
 var travelled_distance = 0
 
 func _physics_process(delta):
-	const SPEED = 1000
-	const RANGE = 1200
+
 	var direction = Vector2.RIGHT.rotated(rotation)
-	position += direction * SPEED *delta
-	travelled_distance += SPEED * delta
+	position += direction * GameManager.bullet_speed *delta
+	travelled_distance += GameManager.bullet_speed * delta
 	
-	if travelled_distance > RANGE:
+	if travelled_distance > GameManager.bullet_range:
 		queue_free()
 
 

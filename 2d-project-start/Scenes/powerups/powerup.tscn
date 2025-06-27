@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0mo8axus5q67"]
+
+[ext_resource type="Script" uid="uid://tsnsis3r56r2" path="res://Scenes/powerups/power_up.gd" id="1_bixg0"]
+[ext_resource type="Texture2D" uid="uid://sxyfdxchxnmg" path="res://assets/DamageUp.png" id="1_l07o2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bixg0"]
+
+[sub_resource type="Animation" id="Animation_l07o2"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(0.45, 0.45)]
+}
+
+[sub_resource type="Animation" id="Animation_bixg0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3, 0.3)]
+}
+
+[sub_resource type="Animation" id="Animation_bvw1q"]
+resource_name = "picked_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.201013, 0.49825),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(0.4, 0.4), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bvw1q"]
+_data = {
+&"RESET": SubResource("Animation_bixg0"),
+&"idle": SubResource("Animation_l07o2"),
+&"picked_up": SubResource("Animation_bvw1q")
+}
+
+[node name="Powerup" type="Area2D"]
+scale = Vector2(0.3, 0.3)
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_bixg0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bixg0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_l07o2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bvw1q")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_powerup_body_entered"]

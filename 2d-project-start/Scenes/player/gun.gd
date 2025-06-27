@@ -27,7 +27,7 @@ func shoot():
 	if target_enemy == null:
 		return
 		
-	const BULLET = preload("res://bullet.tscn")
+	const BULLET = preload("res://Scenes/player/bullet.tscn")
 	var new_bullet = BULLET.instantiate()
 	new_bullet.global_transform = %ShootingPoint.global_transform
 	%ShootingPoint.add_child(new_bullet)

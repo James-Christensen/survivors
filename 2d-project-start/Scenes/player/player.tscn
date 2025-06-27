@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://b4dtaeyg4g0k"]
 
 [ext_resource type="PackedScene" uid="uid://pbmyh1qru7p" path="res://characters/happy_boo/happy_boo.tscn" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://bkhhm68v6pd2o" path="res://player.gd" id="1_onrkg"]
-[ext_resource type="PackedScene" uid="uid://cphcr81upg72i" path="res://gun.tscn" id="3_i3pqv"]
+[ext_resource type="Script" uid="uid://bkhhm68v6pd2o" path="res://Scenes/player/player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://cphcr81upg72i" path="res://Scenes/player/gun.tscn" id="3_i3pqv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 35.0143
@@ -25,6 +25,8 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 17
+collision_mask = 17
 script = ExtResource("1_onrkg")
 
 [node name="HappyBoo" parent="." instance=ExtResource("1_4flbx")]

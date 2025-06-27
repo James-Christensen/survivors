@@ -5,7 +5,7 @@ func _ready():
 
 func spawn_mob():
 	%PathFollow2D.progress_ratio = randf()
-	var new_mob = preload("res://mob.tscn").instantiate()
+	var new_mob = preload("res://Scenes/enemy/mob.tscn").instantiate()
 	new_mob.global_position = %PathFollow2D.global_position
 	add_child(new_mob)
 
