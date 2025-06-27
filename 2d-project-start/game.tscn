@@ -22,46 +22,37 @@ unique_name_in_owner = true
 position = Vector2(945, 527)
 
 [node name="Mob" parent="." instance=ExtResource("3_fc0e3")]
-position = Vector2(648, 849)
-
-[node name="StaticBody2D" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(1578, 149)
-
-[node name="StaticBody2D2" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(1461, 1007)
-
-[node name="StaticBody2D3" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(92, 81)
-
-[node name="StaticBody2D4" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(1384, 154)
-
-[node name="StaticBody2D5" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(1557, 367)
-
-[node name="StaticBody2D6" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(387, 670)
-
-[node name="StaticBody2D7" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(92, 1077)
-
-[node name="StaticBody2D8" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(94, 411)
-
-[node name="StaticBody2D9" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(813, 9)
-
-[node name="StaticBody2D10" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(390, 317)
-
-[node name="StaticBody2D11" parent="." instance=ExtResource("3_feb5d")]
-position = Vector2(1501, 327)
+position = Vector2(624, 385)
 
 [node name="Mob2" parent="." instance=ExtResource("3_fc0e3")]
-position = Vector2(1436, 777)
+position = Vector2(263, 800)
 
 [node name="Mob3" parent="." instance=ExtResource("3_fc0e3")]
-position = Vector2(1426, 592)
+position = Vector2(1741, 919)
 
 [node name="Mob4" parent="." instance=ExtResource("3_fc0e3")]
-position = Vector2(147, 914)
+position = Vector2(1829, 122)
+
+[node name="PineTree" parent="." instance=ExtResource("3_feb5d")]
+position = Vector2(169, 128)
+
+[node name="PineTree2" parent="." instance=ExtResource("3_feb5d")]
+position = Vector2(511, 853)
+
+[node name="PineTree3" parent="." instance=ExtResource("3_feb5d")]
+position = Vector2(78, 935)
+
+[node name="PineTree4" parent="." instance=ExtResource("3_feb5d")]
+position = Vector2(1716, 244)
+
+[node name="PineTree5" parent="." instance=ExtResource("3_feb5d")]
+position = Vector2(1408, 866)
+
+[node name="PineTree6" parent="." instance=ExtResource("3_feb5d")]
+position = Vector2(1129, 31)
+
+[node name="PineTree7" parent="." instance=ExtResource("3_feb5d")]
+position = Vector2(846, 78)
+
+[node name="PineTree8" parent="." instance=ExtResource("3_feb5d")]
+position = Vector2(1170, 831)
