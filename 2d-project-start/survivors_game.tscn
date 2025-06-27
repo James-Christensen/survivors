@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dun1cpardk2xw"]
+[gd_scene load_steps=8 format=3 uid="uid://dun1cpardk2xw"]
 
 [ext_resource type="Script" uid="uid://2aogeww6mxlj" path="res://game.gd" id="1_qclsr"]
 [ext_resource type="PackedScene" uid="uid://b4dtaeyg4g0k" path="res://player.tscn" id="2_a7q7f"]
 [ext_resource type="PackedScene" uid="uid://ymcfig6q58q3" path="res://pinetree.tscn" id="3_6h7ij"]
+[ext_resource type="StyleBox" uid="uid://rjmty1saw2qr" path="res://play_again_button_pressed.tres" id="3_7jj1j"]
 [ext_resource type="Script" uid="uid://ydqki8iy5iw8" path="res://header.gd" id="3_qqaft"]
 
 [sub_resource type="Curve2D" id="Curve2D_cp6e5"]
@@ -43,29 +44,48 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.439216)
 
-[node name="Label" type="Label" parent="GameOver/ColorRect"]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -358.0
-offset_top = -107.0
-offset_right = 358.0
-offset_bottom = 107.0
+offset_left = -336.5
+offset_top = -85.0
+offset_right = 336.5
+offset_bottom = 85.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameOver/ColorRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0627451, 0.698039, 0.937255, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.47451)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 6
 theme_override_font_sizes/font_size = 124
 text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="PlayAgainButton" type="Button" parent="GameOver/ColorRect/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0627451, 0.698039, 0.937255, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/pressed = ExtResource("3_7jj1j")
+theme_override_styles/normal = ExtResource("3_7jj1j")
+text = "Play Again?"
+
+[node name="Grass" type="CanvasLayer" parent="."]
 layer = -32
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="Grass"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -73,7 +93,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.623529, 0.866667, 0.317647, 1)
 
-[node name="Header" type="PanelContainer" parent="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="Header" type="PanelContainer" parent="HUD"]
 custom_minimum_size = Vector2(0, 50)
 anchors_preset = 10
 anchor_right = 1.0
@@ -84,31 +107,35 @@ size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_l26od")
 script = ExtResource("3_qqaft")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Header"]
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Header"]
 layout_mode = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Header/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Header/MarginContainer"]
 layout_mode = 2
 
-[node name="PowerUps" type="Label" parent="CanvasLayer/Header/MarginContainer/HBoxContainer"]
+[node name="PowerUps" type="Label" parent="HUD/Header/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "ITEMS GO HERE"
 
-[node name="Spacer" type="Control" parent="CanvasLayer/Header/MarginContainer/HBoxContainer"]
+[node name="Spacer" type="Control" parent="HUD/Header/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 
-[node name="XP" type="Label" parent="CanvasLayer/Header/MarginContainer/HBoxContainer"]
+[node name="XP" type="Label" parent="HUD/Header/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "XP: 1200"
 
-[node name="Score_Label" type="Label" parent="CanvasLayer/Header/MarginContainer/HBoxContainer"]
+[node name="Spacer2" type="Control" parent="HUD/Header/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="Score_Label" type="Label" parent="HUD/Header/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -150,3 +177,6 @@ position = Vector2(-573, -231)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
+[connection signal="button_down" from="GameOver/ColorRect/VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_button_down"]
+[connection signal="button_up" from="GameOver/ColorRect/VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_button_up"]
+[connection signal="pressed" from="GameOver/ColorRect/VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]

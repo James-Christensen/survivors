@@ -6,3 +6,5 @@ res://GameManager.gd
 res://header.gd
 res://mob.gd
 res://gun.gd
+res://player.gd
+res://play_again_button_pressed.tres
