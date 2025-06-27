@@ -6,11 +6,10 @@ func _physics_process(delta):
 	for area in all_areas:
 		print("Found area: ", area.name)
 	
-	var enemies_in_range = get_overlapping_areas()
+
+	var enemies_in_range = get_overlapping_bodies()
 	if enemies_in_range.size() > 0:
-		print("Enemies in Range")
 		var target_enemy = enemies_in_range.front()
-		print("target_enemy found")
 		look_at(target_enemy.global_position)
 
 
