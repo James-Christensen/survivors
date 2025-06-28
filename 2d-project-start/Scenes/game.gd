@@ -38,3 +38,7 @@ func _on_play_again_button_pressed():
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0.0, 0.3)
 	tween.tween_callback(restart_game)
+
+
+func _on_player_2_health_depleted() -> void:
+	pass # Replace with function body.

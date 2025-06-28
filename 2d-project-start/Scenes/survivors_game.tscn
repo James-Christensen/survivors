@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dun1cpardk2xw"]
 
 [ext_resource type="Script" uid="uid://2aogeww6mxlj" path="res://Scenes/game.gd" id="1_eua6o"]
-[ext_resource type="PackedScene" uid="uid://b4dtaeyg4g0k" path="res://Scenes/player/player.tscn" id="2_dfjrj"]
+[ext_resource type="PackedScene" uid="uid://bigv70jqf6d8p" path="res://Scenes/player/dark_oracle.tscn" id="2_dfjrj"]
 [ext_resource type="StyleBox" uid="uid://rjmty1saw2qr" path="res://assets/play_again_button_pressed.tres" id="3_twsm8"]
 [ext_resource type="Script" uid="uid://ydqki8iy5iw8" path="res://UI/header.gd" id="4_qxpe7"]
 [ext_resource type="PackedScene" uid="uid://ymcfig6q58q3" path="res://pinetree.tscn" id="5_v0jmy"]
@@ -25,8 +25,6 @@ wait_time = 0.3
 autostart = true
 
 [node name="Player" parent="." instance=ExtResource("2_dfjrj")]
-collision_layer = 32785
-collision_mask = 32785
 
 [node name="Path2D" type="Path2D" parent="Player"]
 curve = SubResource("Curve2D_cp6e5")
@@ -182,7 +180,8 @@ position = Vector2(-573, -231)
 position = Vector2(433, 349)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
+[connection signal="health_depleted" from="Player" to="." method="_on_player_2_health_depleted"]
+[connection signal="health_depleted" from="Player" to="Player" method="_on_health_depleted"]
 [connection signal="button_down" from="GameOver/ColorRect/VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_button_down"]
 [connection signal="button_up" from="GameOver/ColorRect/VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_button_up"]
 [connection signal="pressed" from="GameOver/ColorRect/VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
