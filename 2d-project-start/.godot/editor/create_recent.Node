@@ -1,9 +1,9 @@
+Button
 Control
 HBoxContainer
 VBoxContainer
 MarginContainer
 TextureButton
-Button
 Label
 TextureRect
 ColorRect

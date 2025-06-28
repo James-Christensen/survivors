@@ -1,10 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://bporuk12cxre4"]
-
-[ext_resource type="Texture2D" uid="uid://dsgq1bo20kr3j" path="res://assets/tile_0009.png" id="1_06t4h"]
+[gd_scene load_steps=5 format=3 uid="uid://bporuk12cxre4"]
 
 [sub_resource type="SystemFont" id="SystemFont_7vrkn"]
 font_names = PackedStringArray("AppleGothic")
 font_weight = 600
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vrkn"]
+bg_color = Color(0.298039, 0.623529, 0.917647, 0.541176)
+border_color = Color(0.0627451, 0.698039, 0.937255, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_06t4h"]
+bg_color = Color(0.298039, 0.623529, 0.917647, 0.541176)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhts7"]
+bg_color = Color(0.027451, 0.129412, 0.364706, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.478431, 0.764706, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -54,15 +75,36 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="SpacerTop" type="Control" parent="Content/Menu Buttons/VBoxContainer"]
-custom_minimum_size = Vector2(0, 250)
+custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 
-[node name="Start Game" type="TextureButton" parent="Content/Menu Buttons/VBoxContainer"]
-custom_minimum_size = Vector2(250, 0)
+[node name="Button" type="Button" parent="Content/Menu Buttons/VBoxContainer"]
+custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
-size_flags_vertical = 4
-texture_normal = ExtResource("1_06t4h")
-stretch_mode = 0
+theme_override_colors/font_hover_color = Color(0, 0.478431, 0.764706, 1)
+theme_override_colors/font_color = Color(0, 0.478431, 0.764706, 1)
+theme_override_colors/font_pressed_color = Color(0.124658, 0.424054, 0.913804, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_06t4h")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
+text = "Start Game"
+
+[node name="Spacer2" type="Control" parent="Content/Menu Buttons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="Content/Menu Buttons/VBoxContainer"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0.478431, 0.764706, 1)
+theme_override_colors/font_color = Color(0, 0.478431, 0.764706, 1)
+theme_override_colors/font_pressed_color = Color(0.124658, 0.424054, 0.913804, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/hover = SubResource("StyleBoxFlat_7vrkn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_06t4h")
+theme_override_styles/normal = SubResource("StyleBoxFlat_rhts7")
+text = "Settings"
 
 [node name="SpacerR" type="Control" parent="Content/Menu Buttons"]
 layout_mode = 2
