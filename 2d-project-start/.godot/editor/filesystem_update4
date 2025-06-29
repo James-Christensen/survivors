@@ -1,9 +1,11 @@
 res://Scenes/survivors_game.tscn
-res://main_menu.tscn
 res://Scenes/player/basic_player.tscn
-res://Scenes/player/basic_player.gd
 res://Scenes/player/player.tscn
-res://Scenes/game.gd
 res://Scenes/player/dark_oracle.tscn
+res://Scenes/player/orb.tscn
+res://Scenes/player/orb.gd
 res://Scenes/player/dark_oracle.gd
+res://Scenes/player/orbAnimation.gd
 res://Scenes/enemy/mob.gd
+res://Scenes/enemy/mob.tscn
+res://Scenes/player/bolt.tscn

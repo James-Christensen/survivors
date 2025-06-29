@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dni0wn3dk8vl6" path="res://characters/basic_human/Unarmed_Walk_full.png" id="4_4d10h"]
 [ext_resource type="Texture2D" uid="uid://cwcwmcucnbvw0" path="res://characters/dark_oracle/Idle/0_Dark_Oracle_Idle_001.png" id="4_5fepa"]
 [ext_resource type="Texture2D" uid="uid://ci83qk8o2tf70" path="res://characters/dark_oracle/Idle/0_Dark_Oracle_Idle_002.png" id="5_4nmkj"]
-[ext_resource type="PackedScene" uid="uid://cphcr81upg72i" path="res://Scenes/player/gun.tscn" id="5_52q5l"]
 [ext_resource type="Texture2D" uid="uid://b0sjj7benwjce" path="res://characters/dark_oracle/Idle/0_Dark_Oracle_Idle_003.png" id="6_q8ghi"]
 [ext_resource type="Texture2D" uid="uid://bhmv3fp3u7nvo" path="res://characters/dark_oracle/Idle/0_Dark_Oracle_Idle_004.png" id="7_osa4a"]
 [ext_resource type="Texture2D" uid="uid://cxrnvyw0s73ks" path="res://characters/dark_oracle/Idle/0_Dark_Oracle_Idle_005.png" id="8_eu52p"]
@@ -46,6 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://brbqyhbldm2g2" path="res://characters/dark_oracle/Walking/0_Dark_Oracle_Walking_021.png" id="43_552ty"]
 [ext_resource type="Texture2D" uid="uid://deqjhpe4dp4ap" path="res://characters/dark_oracle/Walking/0_Dark_Oracle_Walking_022.png" id="44_5csmc"]
 [ext_resource type="Texture2D" uid="uid://dynrfndoriri8" path="res://characters/dark_oracle/Walking/0_Dark_Oracle_Walking_023.png" id="45_ikps0"]
+[ext_resource type="PackedScene" uid="uid://b4l846ymhal1x" path="res://Scenes/player/orb.tscn" id="46_2pkbs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kpj7a"]
 radius = 7.07107
@@ -371,8 +371,7 @@ frame_progress = 0.579676
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Gun" parent="." instance=ExtResource("5_52q5l")]
-position = Vector2(6, -8)
+[node name="Orb" parent="." instance=ExtResource("46_2pkbs")]
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -386,9 +385,9 @@ debug_color = Color(0.884382, 0.314202, 0.296341, 0.42)
 [node name="ProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
 offset_left = -119.0
-offset_top = -158.0
+offset_top = -217.0
 offset_right = 121.0
-offset_bottom = -131.0
+offset_bottom = -190.0
 theme_override_styles/background = SubResource("StyleBoxFlat_tprx1")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ffnah")
 value = 100.0
