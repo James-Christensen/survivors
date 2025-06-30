@@ -1,8 +1,9 @@
+Sprite2D
+AnimatedSprite2D
 ColorRect
 CollisionShape2D
 StaticBody2D
 AnimationPlayer
-AnimatedSprite2D
 CharacterBody2D
 Button
 Control
@@ -11,4 +12,3 @@ VBoxContainer
 MarginContainer
 TextureButton
 Label
-TextureRect
