@@ -10,7 +10,7 @@ var last_upgrade_threshold: int = 0  # Track upgrades
 
 #PLayer info
 var health = 100.0
-var damage_amount = 0
+var damage_amount = 1
 var max_damage_amount = 3
 
 #Bullet

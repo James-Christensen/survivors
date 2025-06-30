@@ -19,19 +19,23 @@ func _physics_process(delta):
 	# Handle animations
 	if direction != Vector2.ZERO:
 		if direction.x != 0:
+			sprite.flip_h = direction.x < 0
+
 			if taking_damage:
 				sprite.play("hurt")
-				sprite.flip_h = direction.x < 0
 			else:	
 				sprite.play("walk_right")
-				sprite.flip_h = direction.x < 0  # Flip if moving left
+				#sprite.flip_h = direction.x < 0  # Flip if moving left
 		else:
 			if taking_damage:
 				sprite.play("hurt")
 			else:	
 				sprite.play("walk_right")  # Or keep current animation
 	else:
-		sprite.play("idle")
+		if taking_damage:
+				sprite.play("hurt")
+		else:
+			sprite.play("idle")
 		
 	const DAMAGE_RATE = 5.0
 	var overlapping_mobs = 	%HurtBox.get_overlapping_bodies()
@@ -52,11 +56,12 @@ func handle_death():
 
 func _on_animation_finished():
 	var current_anim = sprite.animation
-	if current_anim == "hurt":
-		print("hurt")
-	elif current_anim == "idle":
-		print("Idle animation finished")
-	elif current_anim == "die":
+	if current_anim == "die":
 		print("Die Completed:")
 		print("emitting health depleted")		
 		health_depleted.emit()
+	elif current_anim == "hurt":
+		print("Hurt Completed:")
+		taking_damage = false
+	else:
+		print("Animation Finished", current_anim)
