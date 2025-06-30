@@ -4,9 +4,12 @@ signal health_depleted
 @onready var sprite = $AnimatedSprite2D
 
 var health = GameManager.health
+var taking_damage = false
+var is_animating = false
 
 func _ready() -> void:
 	sprite.play("idle")
+	sprite.animation_finished.connect(_on_animation_finished)
 
 func _physics_process(delta):
 	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
@@ -16,13 +19,17 @@ func _physics_process(delta):
 	# Handle animations
 	if direction != Vector2.ZERO:
 		if direction.x != 0:
-			# Horizontal movement
-			sprite.play("walk_right")
-			sprite.flip_h = direction.x < 0  # Flip if moving left
+			if taking_damage:
+				sprite.play("hurt")
+				sprite.flip_h = direction.x < 0
+			else:	
+				sprite.play("walk_right")
+				sprite.flip_h = direction.x < 0  # Flip if moving left
 		else:
-			# Only vertical movement - you could use walk animation or create separate up/down
-			sprite.play("walk_right")  # Or keep current animation
-			# Don't change flip_h when moving vertically
+			if taking_damage:
+				sprite.play("hurt")
+			else:	
+				sprite.play("walk_right")  # Or keep current animation
 	else:
 		sprite.play("idle")
 		
@@ -30,12 +37,26 @@ func _physics_process(delta):
 	var overlapping_mobs = 	%HurtBox.get_overlapping_bodies()
 	if overlapping_mobs.size() > 0:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
+		taking_damage = true
 		%ProgressBar.value = health
-		if health  <= 0:
-			health_depleted.emit()
-	
+		if health <= 0:
+			handle_death()
+			
 
+func handle_death():
+	set_physics_process(false)
+	print("Player Died")
+	sprite.stop()
+	sprite.play("die")
+		
 
-func _on_health_depleted() -> void:
-	print("Dark Oracle is Dead!")
-	pass # Replace with function body.
+func _on_animation_finished():
+	var current_anim = sprite.animation
+	if current_anim == "hurt":
+		print("hurt")
+	elif current_anim == "idle":
+		print("Idle animation finished")
+	elif current_anim == "die":
+		print("Die Completed:")
+		print("emitting health depleted")		
+		health_depleted.emit()

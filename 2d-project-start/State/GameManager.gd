@@ -5,7 +5,7 @@ signal victory()
 
 var score: int = 0
 var victory_score: int = 1000
-var last_upgrade_threshold: int = 0  # Add this to track upgrades
+var last_upgrade_threshold: int = 0  # Track upgrades
 
 
 #PLayer info
