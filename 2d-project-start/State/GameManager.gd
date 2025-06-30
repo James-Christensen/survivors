@@ -24,11 +24,8 @@ func add_score(points: int):
 
 	# Check for gun upgrades every 50 points
 	var new_upgrade_threshold = score / 50
-	print("Threshold:")
-	print(new_upgrade_threshold)
 
 	if new_upgrade_threshold > last_upgrade_threshold:
-		print("Gun Upgrading")
 		upgrade_gun()
 		last_upgrade_threshold = new_upgrade_threshold
 	
@@ -45,7 +42,6 @@ func reset_score():
 	
 func reset_game():
 	print("GM reset game")
-
 	health = 100.0
 	reset_score()
 
@@ -56,8 +52,3 @@ func upgrade_gun():
 		bullet_range += 100
 	if bullet_speed <= max_bullet_speed:
 		bullet_speed += 100
-	
-	print("Weapon Stats:")
-	print(damage_amount)
-	print(bullet_range)
-	print(bullet_speed)

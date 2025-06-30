@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dun1cpardk2xw"]
+[gd_scene load_steps=11 format=3 uid="uid://dun1cpardk2xw"]
 
 [ext_resource type="Script" uid="uid://2aogeww6mxlj" path="res://Scenes/game.gd" id="1_eua6o"]
 [ext_resource type="PackedScene" uid="uid://bigv70jqf6d8p" path="res://Scenes/player/dark_oracle.tscn" id="2_dfjrj"]
@@ -16,6 +16,11 @@ point_count = 5
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l26od"]
 bg_color = Color(0.188235, 0.188235, 0.188235, 0.619608)
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_eua6o"]
+normal = Vector2(0.999999, -0.00140056)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dfjrj"]
+
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_eua6o")
@@ -24,7 +29,42 @@ script = ExtResource("1_eua6o")
 wait_time = 0.3
 autostart = true
 
+[node name="Background" type="ColorRect" parent="."]
+z_index = -5
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -495.0
+offset_top = -505.0
+offset_right = 2425.0
+offset_bottom = 1575.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+color = Color(0.623529, 0.866667, 0.317647, 1)
+
+[node name="Background2" type="ColorRect" parent="."]
+z_index = -6
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -966.0
+offset_top = -1000.0
+offset_right = 2954.0
+offset_bottom = 2080.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+color = Color(0.381145, 0.539257, 0.180628, 1)
+
 [node name="Player" parent="." instance=ExtResource("2_dfjrj")]
+position = Vector2(960, 540)
+collision_layer = 5
+collision_mask = 5
 
 [node name="Path2D" type="Path2D" parent="Player"]
 curve = SubResource("Curve2D_cp6e5")
@@ -85,8 +125,10 @@ text = "Play Again?"
 
 [node name="Grass" type="CanvasLayer" parent="."]
 layer = -32
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Grass"]
+z_index = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -143,41 +185,89 @@ size_flags_horizontal = 3
 text = "Score: 100"
 horizontal_alignment = 2
 
-[node name="PineTree" parent="." instance=ExtResource("5_v0jmy")]
-position = Vector2(66, 591)
-
-[node name="PineTree2" parent="." instance=ExtResource("5_v0jmy")]
-position = Vector2(155, 643)
-
-[node name="PineTree3" parent="." instance=ExtResource("5_v0jmy")]
-position = Vector2(-9.99997, 687)
-
-[node name="PineTree4" parent="." instance=ExtResource("5_v0jmy")]
-position = Vector2(682, 254)
-
-[node name="PineTree5" parent="." instance=ExtResource("5_v0jmy")]
-position = Vector2(829, 384)
-
-[node name="PineTree11" parent="." instance=ExtResource("5_v0jmy")]
-position = Vector2(781, -296)
-
-[node name="PineTree6" parent="." instance=ExtResource("5_v0jmy")]
-position = Vector2(-677, 313)
-
-[node name="PineTree7" parent="." instance=ExtResource("5_v0jmy")]
-position = Vector2(-788, 370)
-
-[node name="PineTree8" parent="." instance=ExtResource("5_v0jmy")]
-position = Vector2(-829, 229)
-
-[node name="PineTree9" parent="." instance=ExtResource("5_v0jmy")]
-position = Vector2(-346, -355)
-
-[node name="PineTree10" parent="." instance=ExtResource("5_v0jmy")]
-position = Vector2(-573, -231)
-
 [node name="Powerup" parent="." instance=ExtResource("6_dfjrj")]
 position = Vector2(433, 349)
+collision_layer = 4
+collision_mask = 4
+
+[node name="LeftBoundary" type="StaticBody2D" parent="."]
+position = Vector2(-5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBoundary"]
+position = Vector2(-500, 540)
+shape = SubResource("WorldBoundaryShape2D_eua6o")
+
+[node name="RightBoundary" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBoundary"]
+position = Vector2(2420, 540)
+rotation = 3.13763
+shape = SubResource("WorldBoundaryShape2D_eua6o")
+
+[node name="BottomBoundary" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBoundary"]
+position = Vector2(960, 1580)
+rotation = -6.28319
+shape = SubResource("WorldBoundaryShape2D_dfjrj")
+
+[node name="TopBoundary" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBoundary"]
+position = Vector2(960, -500)
+rotation = 1.57961
+shape = SubResource("WorldBoundaryShape2D_eua6o")
+
+[node name="PineTree" parent="." instance=ExtResource("5_v0jmy")]
+position = Vector2(2213, -749)
+
+[node name="PineTree2" parent="." instance=ExtResource("5_v0jmy")]
+position = Vector2(2714, -603)
+
+[node name="PineTree3" parent="." instance=ExtResource("5_v0jmy")]
+position = Vector2(-379, 1701)
+
+[node name="PineTree4" parent="." instance=ExtResource("5_v0jmy")]
+position = Vector2(524, 1888)
+
+[node name="PineTree5" parent="." instance=ExtResource("5_v0jmy")]
+position = Vector2(1428, 1766)
+
+[node name="PineTree6" parent="." instance=ExtResource("5_v0jmy")]
+position = Vector2(2559, 1131)
+
+[node name="PineTree7" parent="." instance=ExtResource("5_v0jmy")]
+position = Vector2(-697, -863)
+
+[node name="PineTree8" parent="." instance=ExtResource("5_v0jmy")]
+position = Vector2(-746, -456)
+
+[node name="PineTree9" parent="." instance=ExtResource("5_v0jmy")]
+position = Vector2(-827, 138)
+
+[node name="PineTree10" parent="." instance=ExtResource("5_v0jmy")]
+position = Vector2(-843, 903)
+
+[node name="PineTree11" parent="." instance=ExtResource("5_v0jmy")]
+position = Vector2(-762, 1522)
+
+[node name="PineTree12" parent="." instance=ExtResource("5_v0jmy")]
+position = Vector2(2152, 1726)
+
+[node name="PineTree13" parent="." instance=ExtResource("5_v0jmy")]
+position = Vector2(2665, 1856)
+
+[node name="PineTree14" parent="." instance=ExtResource("5_v0jmy")]
+position = Vector2(-184, -871)
+
+[node name="PineTree15" parent="." instance=ExtResource("5_v0jmy")]
+position = Vector2(565, -896)
+
+[node name="PineTree16" parent="." instance=ExtResource("5_v0jmy")]
+position = Vector2(1558, -847)
+
+[node name="PineTree17" parent="." instance=ExtResource("5_v0jmy")]
+position = Vector2(882, -944)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]

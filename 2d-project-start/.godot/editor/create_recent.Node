@@ -1,6 +1,8 @@
+ColorRect
+CollisionShape2D
+StaticBody2D
 AnimationPlayer
 AnimatedSprite2D
-CollisionShape2D
 CharacterBody2D
 Button
 Control
@@ -10,5 +12,3 @@ MarginContainer
 TextureButton
 Label
 TextureRect
-ColorRect
-Sprite2D
