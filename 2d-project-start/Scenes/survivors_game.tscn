@@ -180,8 +180,7 @@ position = Vector2(-573, -231)
 position = Vector2(433, 349)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="health_depleted" from="Player" to="." method="_on_player_2_health_depleted"]
-[connection signal="health_depleted" from="Player" to="Player" method="_on_health_depleted"]
+[connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="button_down" from="GameOver/ColorRect/VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_button_down"]
 [connection signal="button_up" from="GameOver/ColorRect/VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_button_up"]
 [connection signal="pressed" from="GameOver/ColorRect/VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]

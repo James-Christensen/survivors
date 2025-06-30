@@ -27,18 +27,13 @@ func _on_score_reached():
 	
 
 func restart_game():
+	print("Called Restart Game")
 	GameManager.reset_game()
 	get_tree().reload_current_scene()
 
 func _on_play_again_button_pressed():
-	print("Button pressed!")
+	print("Play again button pressed!")
+
 	get_tree().paused = false
 	%PlayAgainButton.disabled = true
-	
-	var tween = create_tween()
-	tween.tween_property(self, "modulate:a", 0.0, 0.3)
-	tween.tween_callback(restart_game)
-
-
-func _on_player_2_health_depleted() -> void:
-	pass # Replace with function body.
+	restart_game()

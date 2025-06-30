@@ -37,4 +37,5 @@ func _physics_process(delta):
 
 
 func _on_health_depleted() -> void:
+	print("Dark Oracle is Dead!")
 	pass # Replace with function body.

@@ -1,4 +1,7 @@
-res://Scenes/player/bolt.tscn
 res://Scenes/survivors_game.tscn
 res://Scenes/player/dark_oracle.tscn
 res://Scenes/player/orb.tscn
+res://Scenes/player/bolt.tscn
+res://Scenes/game.gd
+res://Scenes/player/dark_oracle.gd
+res://State/GameManager.gd
