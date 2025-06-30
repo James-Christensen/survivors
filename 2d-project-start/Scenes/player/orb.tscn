@@ -104,7 +104,6 @@ script = ExtResource("1_63hi3")
 shape = SubResource("CircleShape2D_nthgb")
 
 [node name="WeaponPivot" type="Marker2D" parent="."]
-position = Vector2(110, 0)
 gizmo_extents = 47.7
 
 [node name="Orb" type="Sprite2D" parent="WeaponPivot"]
@@ -117,7 +116,7 @@ script = SubResource("GDScript_63hi3")
 [node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/Orb"]
 unique_name_in_owner = true
 show_behind_parent = true
-position = Vector2(35, -11)
+position = Vector2(16, 0)
 gizmo_extents = 30.6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="WeaponPivot/Orb"]
