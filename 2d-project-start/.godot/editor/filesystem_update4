@@ -5,3 +5,4 @@ res://Scenes/player/bolt.tscn
 res://Scenes/game.gd
 res://Scenes/player/dark_oracle.gd
 res://State/GameManager.gd
+res://Scenes/golem.tscn
